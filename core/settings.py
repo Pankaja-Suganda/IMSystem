@@ -15,6 +15,9 @@ CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 
+# 
+DATABASE_URL = config('DATABASE_URL', default='S#perS3crEt_1122')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
@@ -93,10 +96,27 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME'  : 'db.sqlite3',
+#     }
+# }
+
+TIME_ZONE = 'UTC'
+
+# DB_CONFIG =dj_database_url.parse(DATABASE_URL)
+# DB_CONFIG['OPTIONS']={'options': f'-c timezone={TIME_ZONE}'}
+
+# print(DB_CONFIG)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME'  : 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sample_postgresql_ims',
+        'USER': 'sample_postgresql_ims_user',
+        'PASSWORD': 'RwAzQUAgdIx5kHZ4OrJU2QyFLopkD4uU',
+        'HOST': 'dpg-cl85tdiuuipc73enh84g-a.ohio-postgres.render.com',
+        'PORT': ''
     }
 }
 
@@ -124,13 +144,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Colombo'
-
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True
 
 #############################################################
 # SRC: https://devcenter.heroku.com/articles/django-assets

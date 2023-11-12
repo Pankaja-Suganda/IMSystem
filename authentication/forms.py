@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.forms import fields
 from .models import BaseUser
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.password_validation import validate_password
 from bootstrap_modal_forms.forms import BSModalModelForm
 
